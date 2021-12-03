@@ -1,4 +1,4 @@
-from day3_helpers import *
+from day3_helpers import get_most_common_bit, binlisttoint, invert_binary_list
 
 # Fifth task
 
