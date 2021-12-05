@@ -17,18 +17,16 @@ def sign(num):
         return 0
 
 
-for vent in vents:
-    line = []
-
-    if vent[1] == vent[3]:
-        # vent line in x axis
-        line = zip(range(vent[0], vent[2] + sign(vent[2] - vent[0]), sign(vent[2] - vent[0])), [vent[1]] * (abs(vent[2] - vent[0]) + 1))
-    elif vent[0] == vent[2]:
-        # vent line in y axis
-        line = zip([vent[0]] * (abs(vent[3] - vent[1]) + 1), range(vent[1], vent[3] + sign(vent[3] - vent[1]), sign(vent[3] - vent[1])))
+# special range function - in case start and stop are the same, its returning a list with same values with length of other dimension
+def jrange(v1, v2, v3, v4):
+    if v1 == v2:
+        return [v1] * (abs(v4 - v3) + 1)
     else:
-        # diagonal line
-        line = zip(range(vent[0], vent[2] + sign(vent[2] - vent[0]), sign(vent[2] - vent[0])), range(vent[1], vent[3] + sign(vent[3] - vent[1]), sign(vent[3] - vent[1])))
+        return range(v1, v2 + sign(v2 - v1), sign(v2 - v1))
+
+
+for vent in vents:
+    line = zip(jrange(vent[0], vent[2], vent[1], vent[3]), jrange(vent[1], vent[3], vent[0], vent[2]))
 
     for x, y in line:
         diagram[x][y] += 1
