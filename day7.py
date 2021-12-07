@@ -21,10 +21,6 @@ print(min(low_diff, high_diff))
 def gauss_sum(num):
     return int((num * num + num) / 2)
 
-
-best_so_far = math.inf
-
-for candidate in range(min(crabs), max(crabs) + 1):
-    best_so_far = min(best_so_far, sum(gauss_sum(abs(c - candidate)) for c in crabs))
+best_so_far = min(sum(gauss_sum(abs(c - candidate)) for c in crabs) for candidate in range(min(crabs), max(crabs) + 1))
 
 print(best_so_far)
