@@ -4,10 +4,10 @@ with open('input7') as f:
     crabs = [line.rstrip().split(",") for line in f][0]
     crabs = [int(c) for c in crabs]
 
+# 1st task
+
 low = statistics.median_low(crabs)
 high = statistics.median_high(crabs)
-
-# 1st task
 
 low_diff = sum(abs(c - low) for c in crabs)
 high_diff = sum(abs(c - high) for c in crabs)
