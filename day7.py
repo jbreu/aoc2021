@@ -1,5 +1,4 @@
 import statistics
-import math
 
 with open('input7') as f:
     crabs = [line.rstrip().split(",") for line in f][0]
@@ -20,6 +19,7 @@ print(min(low_diff, high_diff))
 
 def gauss_sum(num):
     return int((num * num + num) / 2)
+
 
 best_so_far = min(sum(gauss_sum(abs(c - candidate)) for c in crabs) for candidate in range(min(crabs), max(crabs) + 1))
 
