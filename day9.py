@@ -4,6 +4,8 @@ with open('input9') as f:
     x_len = len(heightmap[0])
     y_len = len(heightmap)
 
+# wrap heightmap with "10"s
+
 heightmap.insert(0, [10]*x_len)
 heightmap.insert(y_len+1, [10]*x_len)
 
